@@ -1,5 +1,6 @@
-Exercício 1 - Programação de SW Aplicada.
-Professor: Julio
+Exercício 1 - Programação de SW Aplicada
+
+Professor: Julio Henrique Machado
 
 Aluno Anderson Fajardo
 
