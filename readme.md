@@ -1,3 +1,60 @@
+Exercício 1 - Programação de SW Aplicada.
+Professor: Julio
+
+Aluno Anderson Fajardo
+
+# Compile o código e/ou execute o projeto via terminal
+
+./mvnw spring-boot:run
+
+Lembrando que a aplicação irá "subir" no endereço:
+
+http://localhost:9966/petclinic/
+
+# Obtendo um token JWT
+
+Usando a ferramenta postman ou curl:
+
+POST http://localhost:9966/petclinic/authenticate
+
+Body da requisição:
+
+{
+  "username": "admin",
+  "password": "admin"
+}
+
+Esses usuários já devem estar cadastrados previamente no banco. O projeto original do PetClinic REST já traz usuários pré-definidos.
+
+Resposta:
+
+Você receberá um token JWT como resposta.
+
+# Acesso a endpoint protegido
+
+Agora, com o token recebido, adicione-o ao Header Authorization como Bearer para acessar outros endpoints protegidos, por exemplo:
+
+GET http://localhost:9966/petclinic/api/owners
+
+Header:
+
+Authorization: Bearer <TOKEN_GERADO_ANTERIORMENTE>
+
+- Se o token for válido, você terá acesso ao recurso solicitado.
+- Caso contrário, você receberá um erro 401 Unauthorized.
+
+# Utilizando CURL
+
+curl -X POST http://localhost:9966/petclinic/authenticate \
+-H "Content-Type: application/json" \
+-d '{"username":"usuário","password":"senha"}'
+
+Após receber o token:
+
+curl -X GET http://localhost:9966/petclinic/api/owners \
+-H "Authorization: Bearer <TOKEN_GERADO>"
+
+
 # REST version of Spring PetClinic Sample Application (spring-framework-petclinic extension)
 
 [![Java Build Status](https://github.com/spring-petclinic/spring-petclinic-rest/actions/workflows/maven-build-master.yml/badge.svg)](https://github.com/spring-petclinic/spring-petclinic-rest/actions/workflows/maven-build-master.yml)
